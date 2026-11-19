@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Engineering Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #0a1016;
+    color: #edf3f5;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+/* NAVBAR */
+
+header {
+    background: #0a1016;
+    padding: 20px 7.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ffffff18;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font: bold 22px "Space Grotesk";
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #b6f36b;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: #aab5bb;
+    font-size: 13px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #b6f36b;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+    padding: 90px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.subtitle {
+    color: #b6f36b;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font: 600 clamp(45px, 6vw, 75px)/1.05 "Space Grotesk";
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #b6f36b;
+}
+
+.hero-description {
+    color: #9ba8af;
+    font-size: 14px;
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.primary {
+    background: #b6f36b;
+    color: #101710;
+}
+
+.primary:hover {
+    background: #d0ff99;
+    transform: translateY(-4px);
+}
+
+.secondary {
+    border: 1px solid #53616a;
+}
+
+.secondary:hover {
+    border-color: #b6f36b;
+    color: #b6f36b;
+}
+
+.status {
+    margin-top: 35px;
+    color: #b6f36b;
+    font-size: 12px;
+}
+
+/* PERSONAL IMAGE */
+
+.hero-image {
+    width: 300px;
+    height: 390px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #b6f36b;
+    border-radius: 8px;
+}
+
+.image-label {
+    position: absolute;
+    bottom: 20px;
+    left: -35px;
+    background: #17232a;
+    padding: 15px 20px;
+    border-left: 3px solid #b6f36b;
+}
+
+.image-label h3 {
+    font-size: 13px;
+}
+
+.image-label p {
+    color: #9ba8af;
+    font-size: 11px;
+}
+
+/* SECTIONS */
+
+section:not(.hero) {
+    padding: 100px 8%;
+}
+
+.section-subtitle {
+    color: #b6f36b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font: 600 clamp(35px, 4vw, 55px) "Space Grotesk";
+    line-height: 1.2;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: #b6f36b;
+}
+
+/* ABOUT */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 70px;
+}
+
+.about-content h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: #9ba8af;
+    font-size: 14px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ffffff20;
+}
+
+.info-grid small {
+    color: #b6f36b;
+    font-size: 10px;
+}
+
+.info-grid h4 {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.skill-card {
+    background: #111a21;
+    border: 1px solid #ffffff15;
+    padding: 25px;
+    min-height: 190px;
+    transition: .3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+    border-color: #b6f36b;
+}
+
+.skill-card h3 {
+    color: #b6f36b;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    color: #9ba8af;
+    font-size: 12px;
+}
+
+/* CERTIFICATES */
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.certificate-card {
+    background: #111a21;
+    padding: 12px;
+    border: 1px solid #ffffff15;
+    transition: .3s;
+}
+
+.certificate-card:hover {
+    transform: translateY(-6px);
+    border-color: #b6f36b;
+}
+
+.certificate-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #e8ece8;
+}
+
+.certificate-card h3 {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.certificate-card p {
+    color: #89979e;
+    font-size: 11px;
+}
+
+/* DRAWINGS */
+
+.drawings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.drawing-card {
+    background: #111a21;
+    overflow: hidden;
+    border: 1px solid #ffffff15;
+    transition: .3s;
+}
+
+.drawing-card:hover {
+    transform: translateY(-5px);
+    border-color: #b6f36b;
+}
+
+.drawing-card img {
+    width: 100%;
+    height: 25px;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.drawing-card:hover img {
+    transform: scale(1.04);
+}
+
+.drawing-info {
+    padding: 20px;
+}
+
+.drawing-info h3 {
+    font-size: 16px;
+}
+
+.drawing-info p {
+    color: #89979e;
+    font-size: 12px;
+}
+
+/* CV */
+
+.cv-section {
+    background: #b6f36b;
+    color: #101710;
+    margin: 50px 8%;
+    padding: 60px !important;
+}
+
+.cv-section .section-subtitle {
+    color: #35552b;
+}
+
+.cv-section h2 {
+    font: 600 40px "Space Grotesk";
+}
+
+.cv-section p {
+    color: #38513a;
+    margin: 20px 0;
+    max-width: 500px;
+    font-size: 14px;
+}
+
+.cv-section .primary {
+    background: #101710;
+    color: white;
+}
+
+/* CONTACT */
+
+.contact h2 {
+    font: 600 clamp(35px, 5vw, 65px)/1.2 "Space Grotesk";
+    max-width: 800px;
+}
+
+.contact h2 span {
+    color: #b6f36b;
+}
+
+.contact-links {
+    display: flex;
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.contact-links a {
+    color: #b6f36b;
+    font-size: 14px;
+}
+
+.contact-links a:hover {
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 25px 8%;
+    border-top: 1px solid #ffffff20;
+    display: flex;
+    justify-content: space-between;
+    color: #89979e;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+    .hero {
+        padding: 80px 7%;
+    }
+
+    .hero-image {
+        width: 240px;
+        height: 320px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        gap: 35px;
+    }
+
+}
+
+@media(max-width: 650px) {
+
+    header {
+        padding: 18px 7%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111a21;
+        flex-direction: column;
+        padding: 20px 7%;
+        gap: 18px;
+        align-items: flex-start;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 7%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 230px;
+        height: 290px;
+        margin-top: 25px;
+    }
+
+    .image-label {
+        left: -20px;
+    }
+
+    section:not(.hero) {
+        padding: 70px 7%;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .certificates-grid,
+    .drawings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-section {
+        margin: 20px 5%;
+        padding: 35px 25px !important;
+    }
+
+    .cv-section h2 {
+        font-size: 32px;
+    }
+
+    .contact-links {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <a href="#home" class="logo">
+        POWER<span>FOLIO</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#Photo">Photo</a>
+        <a href="#drawings">Drawings</a>
+        <a href="Cv.pdf">My CV</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="subtitle">POWER ENGINEERING STUDENT</p>
+
+        <h1>
+            Designing The
+            <span>Power Behind</span>
+            Tomorrow.
+        </h1>
+
+        <p class="hero-description">
+            Hello, I'm <span style="color: #0aac20da;">Yasser Mohamed</span>, an aspiring electrical power
+            engineer interested in power systems, electrical
+            design and practical engineering solutions.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#drawings" class="btn primary">
+                Explore My Work ↗
+            </a>
+
+            <a href="Cv.pdf" download class="btn secondary">
+                Download CV ↓
+            </a>
+
+        </div>
+
+        <p class="status">
+            ● Open To Internship Opportunities
+        </p>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="Photo/IMG_٢٠٢٦١١١٩_٠٠٠٨٤٢.jpg" alt="Personal Photo">
+
+        <div class="image-label">
+            <h3>Electrical Engineer</h3>
+            <p>Power & Energy</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div>
+        <p class="section-subtitle">01 — ABOUT ME</p>
+
+        <h2 class="section-title">
+            Curious Mind.
+            <span>Practical Engineer.</span>
+        </h2>
+    </div>
+
+    <div class="about-content">
+
+        <h3>
+            I am an engineering student building a strong foundation
+            in electrical power engineering.
+        </h3>
+
+        <p>
+            I am passionate about electrical systems,
+            engineering design, and learning new technologies.
+            I always seek opportunities to improve my technical
+            knowledge and gain practical experience.
+        </p>
+
+        <div class="info-grid">
+
+            <div>
+                <small>UNIVERSITY</small>
+                <h4>Elmonofia Universtiy</h4>
+            </div>
+
+            <div>
+                <small>DEPARTMENT</small>
+                <h4>Electrical Power 
+                    Renewable Energy Department
+                </h4>
+            </div>
+
+            <div>
+                <small>ACADEMIC YEAR</small>
+                <h4>Third_Year</h4>
+            </div>
+
+            <div>
+                <small>LOCATION</small>
+                <h4>Shiben_Elkom Elmonofia</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <p class="section-subtitle">02 — MY SKILLS</p>
+
+    <h2 class="section-title">
+        Technical <span>Toolbox.</span>
+    </h2>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <h3>⚡ Power Systems</h3>
+            <p>Electrical power generation, transmission and distribution.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>⌗ AutoCAD</h3>
+            <p>Electrical drawings and engineering design.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>▦ ETAP</h3>
+            <p>Power system analysis and simulation.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>⌘ MATLAB</h3>
+            <p>Engineering calculations and simulations.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CERTIFICATES -->
+
+<section id="Photo">
+
+    <p class="section-subtitle">03 — LEARNING & DEVELOPMENT</p>
+
+    <h2 class="section-title">
+        My <span>Photo in Work</span>
+    </h2>
+
+    <div class="certificates-grid">
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_000756e2e4c275-e156-46ee-9e1d-3cbcb91bceee.jpg" alt="Certificate 1">
+            <a href="Photo/image_20261119_000756e2e4c275-e156-46ee-9e1d-3cbcb91bceee.jpg"><h3>Electrical Power Course</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_0007298d209adf-0363-4c0f-b64a-0490b8c4f34f.jpg" alt="Certificate 2">
+            <a href="Photo/image_20261119_0007298d209adf-0363-4c0f-b64a-0490b8c4f34f.jpg"><h3>AutoCAD Training</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_000734be11647a-5c94-4569-baf8-6813a13b52a1.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_000734be11647a-5c94-4569-baf8-6813a13b52a1.jpg"><h3>Technical Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_000739e9d898a9-eb31-4964-95e4-6681cb4c78a2.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_000739e9d898a9-eb31-4964-95e4-6681cb4c78a2.jpg"><h3> Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_0007461d9f89bf-472f-46ae-8997-8d360a5ffa52.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_0007461d9f89bf-472f-46ae-8997-8d360a5ffa52.jpg"><h3>Technical Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_00075328e41876-c4df-4d73-9799-19a18cebc88d.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_00075328e41876-c4df-4d73-9799-19a18cebc88d.jpg"><h3>Technical Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_000719234515b1-11d7-4cb7-84f1-76e3c7cfc2f1.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_000719234515b1-11d7-4cb7-84f1-76e3c7cfc2f1.jpg"><h3>Technical Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+        <div class="certificate-card">
+            <img src="Photo/image_20261119_000800799b0807-b227-4d01-af48-c12e9085cc70.jpg" alt="Certificate 3">
+            <a href="Photo/image_20261119_000800799b0807-b227-4d01-af48-c12e9085cc70.jpg"><h3>Technical Workshop</h3></a>
+            <p>Training Organization — 2026</p>
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- DRAWINGS -->
+
+<section id="drawings">
+
+    <p class="section-subtitle">04 — MY PROJECTS</p>
+
+    <h2 class="section-title">
+        Engineering <span>Drawings.</span>
+    </h2>
+
+    <div class="drawings-grid">
+
+        <div class="drawing-card">
+            <img src="Drawing/IMG-20261117-WA0062.jpg" alt="Drawing 1">
+            <div class="drawing-info">
+                <a href="Drawing/IMG-20261117-WA0062.jpg"><h3>Electrical Design</h3></a>
+                <p>Electrical Engineering Drawing</p>
+            </div>
+        </div>
+
+        <div class="drawing-card">
+            <img src="Drawing/IMG-20261117-WA0063.jpg" alt="">
+            <div class="drawing-info">
+               <a href="Drawing/IMG-20261117-WA0063.jpg"> <h3>Power System</h3></a>
+                <p>Technical Schematic</p>
+            </div>
+        </div>
+
+        <div class="drawing-card">
+            <img src="Drawing/IMG-20261117-WA0064.jpg" alt="Drawing 3">
+            <div class="drawing-info">
+                <a href="Drawing/IMG-20261117-WA0064.jpg"><h3>Engineering Project</h3></a>
+                <p>Academic Project</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CV -->
+
+<section class="cv-section" id="cv">
+
+    <p class="section-subtitle">05 — PROFESSIONAL PROFILE</p>
+
+    <h2>My Curriculum Vitae</h2>
+
+    <p>
+        Explore my academic background, technical skills,
+        training experience and professional qualifications.
+    </p>
+
+    <a href="Cv.pdf" download class="btn primary">
+        Download My CV ↓
+    </a>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <p class="section-subtitle">06 — LET'S CONNECT</p>
+
+    <h2>
+        Have A Project Or Opportunity?
+        <span>Let's Talk.</span>
+    </h2>
+
+    <div class="contact-links">
+
+        <a href="mailto:Yasser05mohamed@gamil.com">Email ↗</a>
+
+        <a href="https://www.linkedin.com/in/yasser-mohamed-55340629a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
+            LinkedIn ↗
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>POWERFOLIO © 2026 — [Yasser Mohamed]</p>
+
+    <a href="#home">Back To Top ↑</a>
+
+</footer>
+
+<script>
+
+// MOBILE MENU
+
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
+
+menuBtn.addEventListener("click", function() {
+    nav.classList.toggle("active");
+});
+
+// CLOSE MENU AFTER CLICK
+
+document.querySelectorAll("nav a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+        nav.classList.remove("active");
+    });
+
+});
+
+</script>
+
+</body>
+</html>
